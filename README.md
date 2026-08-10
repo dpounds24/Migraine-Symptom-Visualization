@@ -1,138 +1,80 @@
-# **MSDS 570: Final Project**  
-**Investigating the Relationship Between Sensory Symptoms and Migraine Intensity**  
+# Migraine Symptom Visualization
 
-## **Table of Contents**
+Interactive analysis of how sensory symptoms relate to migraine intensity and duration.
 
-1. [Project Overview](#project-overview)  
-2. [Dataset Description](#dataset-description)
-3. [Project Objectives](#project-objectives)  
-4. [Expected Outcomes](#expected-outcomes)  
-5. [Repository Structure](#repository-structure)  
-6. [Methodology](#methodology)  
-7. [Installation and Usage](#installation-and-usage)  
-   - [Setup Instructions](#setup-instructions)  
-   - [Running Jupyter Notebooks](#running-jupyter-notebooks)  
-   - [Running the Dash App](#running-the-dash-app)  
-8. [Dependencies](#dependencies)  
-9. [Acknowledgments](#acknowledgments)
+<!-- Add 1-2 screenshots or a GIF of the dashboard here once deployed -->
+<!-- ![dashboard preview](results/visualizations/dashboard_preview.png) -->
 
----
+## Overview
+Migraine triggers and symptom patterns are hard to see in raw data. This project explores a 400-patient migraine dataset to surface which sensory symptoms (photophobia, phonophobia, visual aura, etc.) correlate most strongly with migraine intensity and duration, then makes those patterns explorable through an interactive dashboard.
 
-## **Project Overview**
-Understanding the relationship between sensory symptoms and migraine intensity is crucial for identifying potential triggers and improving migraine management strategies. This project leverages data visualization techniques to uncover trends and insights that might otherwise go unnoticed.
+## Key Findings
+Analyzed 400 patients (mean age 32, range 15–77) across six migraine types.
 
----
+- **59% of patients reported severe migraines** (intensity level 3); only 5% reported no pain
+- **Vertigo (50 patients) and tinnitus (24 patients)** were the most common sensory symptoms and showed the strongest correlation with both migraine intensity and duration
+- **Symptom count scales with severity** — patients with severe migraines consistently reported more concurrent sensory symptoms than those with mild or moderate cases
+- **Diplopia, visual defects, and paresthesia** were most frequent specifically in severe and longer-lasting migraines, despite being rarer symptoms overall
+- **Basilar-type aura and familial hemiplegic migraine** showed the highest symptom diversity among the six migraine types studied
 
-## **Dataset Description**
-- **Source**: [Migraine Dataset on Kaggle](https://www.kaggle.com/datasets/ranzeet013/migraine-dataset)  
-- **Number of Records**: 400  
-- **Number of Attributes**: 24  
-- **Highlights**: The dataset contains sensory symptoms, migraine intensity, migraine characteristics, and patient demographics.  
+**Takeaway:** sensory symptom presence and count could serve as a low-cost, objective signal for migraine severity — of practical interest for triage or as a feature set in a future predictive model (see Future Work in the full report).
 
-For a complete description of the attributes, refer to the [source materials](https://codeocean.com/capsule/1269964/tree/v1).
+## Live Dashboard
+- **Tableau Public:** *[add link once published]*
+- **Dash app (run locally):** see [Running the Dash App](#running-the-dash-app) below
 
----
+> Tableau Public is the recommended way to share this — it's free to host indefinitely and viewable without anyone cloning the repo. The Dash app is kept for anyone who wants to run the fuller interactive version locally.
 
-## **Project Objectives**
-1. Analyze correlations between sensory symptoms and the intensity/duration of migraines.  
-2. Visualize the distribution and frequency of sensory symptoms across patient demographics and migraine types.  
-3. Provide actionable insights through interactive tools for exploring the data.  
+## Dataset
+- **Source:** [Migraine Dataset, Kaggle](https://www.kaggle.com/datasets/ranzeet013/migraine-dataset)
+- **Size:** 400 records · 24 attributes
+- **Contents:** sensory symptoms, migraine intensity/characteristics, patient demographics
+- Full attribute definitions: [source materials](https://codeocean.com/capsule/1269964/tree/v1)
 
----
+## Methodology
+1. **Preprocessing** — cleaned and encoded the dataset (`notebooks/01_data_preprocessing.ipynb`)
+2. **Exploratory analysis** — heatmaps, scatter plots, box plots, and stacked bar charts to surface correlations (`notebooks/02_exploratory_analysis.ipynb`)
+3. **Interactive dashboard** — Plotly Dash app for open-ended exploration (`scripts/dash_app.py`)
 
-## **Expected Outcomes**
-1. **Interactive Visualizations**:
-   - Heatmaps, scatter plots, box plots, and stacked bar charts to display trends and correlations.  
-2. **Dash App**:
-   - An interactive dashboard allowing users to explore and manipulate the data.  
-3. **Insights**:
-   - Highlights potential migraine triggers and symptom patterns for actionable recommendations.  
-
----
-
-## **Repository Structure**
+## Repository Structure
 ```
-├── README.md                     # Overview of the project
-├── data/                         # Dataset and related files
-│   └── migraine.csv      # The dataset
-├── notebooks/                    # Jupyter notebooks
-│   ├── 01_data_preprocessing.ipynb  # Preprocessing and cleaning
-│   ├── 02_exploratory_analysis.ipynb # Visualizations and trends
-├── scripts/                      # Python scripts
-|   ├── data_processing.py       # Loading and preprocessing logic.
-|   ├── eda.py                   # Exploratory data analysis scripts.
-|   ├── visualizations.py        # Visualization functions (static and interactive).
-|   ├── dash_app.py              # Dash app logic.
-├── results/                      # Outputs (plots, dashboards, etc.)
-│   ├── visualizations/           # Generated visualizations
-└── requirements.txt              # Dependencies and libraries
+├── data/                          # Dataset
+├── notebooks/
+│   ├── 01_data_preprocessing.ipynb
+│   └── 02_exploratory_analysis.ipynb
+├── scripts/
+│   ├── data_processing.py
+│   ├── eda.py
+│   ├── visualizations.py
+│   └── dash_app.py
+├── results/
+│   └── visualizations/            # Exported charts
+└── requirements.txt
 ```
 
----
-
-## **Methodology**
-1. **Data Preprocessing**:
-   - Clean and encode the dataset.
-2. **Exploratory Data Analysis**:
-   - Generate visualizations to identify trends and correlations.  
-3. **Interactive Dashboard**:
-   - Build a Plotly Dash application to allow users to interact with the data.
-
----
-
-## **Installation and Usage**
-
-### **Setup Instructions**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/dpounds24/MSDS-570-Final-Project.git
-   ```
-2. Navigate to the project folder:
-   ```bash
-   cd MSDS-570-Final-Project
-   ```
-3. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### **Running Jupyter Notebooks**
-1. Start Jupyter Notebook:
-   ```bash
-   jupyter notebook
-   ```
-2. Open and run the notebooks in the `notebooks/` folder.
-
-### **Running the Dash App**
-1. Navigate to the `scripts/` directory:
-   ```bash
-   cd scripts
-   ```
-2. Run the Dash application:
-   ```bash
-   python dash_app.py
-   ```
-3. Access the app at `http://localhost:8050`.
-
----
-
-## **Dependencies**
-The project requires the following Python libraries:
+## Running the Dash App
+```bash
+git clone https://github.com/dpounds24/migraine-symptom-visualization.git
+cd migraine-symptom-visualization
+pip install -r requirements.txt
+cd scripts
+python dash_app.py
 ```
-pandas
-numpy
-plotly
-dash
-matplotlib
-seaborn
-jupyter
-```
+Then open `http://localhost:8050`.
 
----
+## Tech Stack
+Python · Pandas · NumPy · Plotly · Dash · Matplotlib · Seaborn
 
-## **Acknowledgments**
-- **Kaggle**: For providing the [Migraine Dataset](https://www.kaggle.com/datasets/ranzeet013/migraine-dataset).  
-- **Dr. Qian**: For guidance throughout this project.  
-- **Meharry Medical College**: For supporting this educational endeavor.
+## Limitations
+- Self-reported symptom and intensity data; no clinical verification
+- 400-record dataset from a single source — findings are exploratory, not diagnostic
+- Limited variability for some symptoms (e.g., ataxia, dysarthria) constrained their statistical power; addressed by aggregating into a total symptom count
+- High prevalence of general symptoms like nausea and phonophobia reduced their discriminative value for distinguishing severity
 
----
+## Acknowledgments
+- [Migraine Dataset](https://www.kaggle.com/datasets/ranzeet013/migraine-dataset) via Kaggle
+- Dr. Qian, for guidance throughout the project
+- Meharry Medical College
+
+## Author
+Destiny Pounds — [portfolio](https://dpounds24.github.io/portfolio/) · [LinkedIn](https://linkedin.com/in/destiny-pounds)
