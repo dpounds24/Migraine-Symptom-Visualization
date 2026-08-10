@@ -6,7 +6,7 @@ Interactive analysis of how sensory symptoms relate to migraine intensity and du
 <!-- ![dashboard preview](results/visualizations/dashboard_preview.png) -->
 
 ## Overview
-Migraine triggers and symptom patterns are hard to see in raw data. This project explores a 400-patient migraine dataset to surface which sensory symptoms (photophobia, phonophobia, visual aura, etc.) correlate most strongly with migraine intensity and duration, then makes those patterns explorable through an interactive dashboard.
+Migraine triggers and symptom patterns are hard to see in raw data. This project explores a 400-patient migraine dataset to surface which sensory symptoms correlate most strongly with migraine intensity and duration, then makes those patterns explorable through an interactive dashboard.
 
 ## Key Findings
 Analyzed 400 patients (mean age 32, range 15–77) across six migraine types.
@@ -67,7 +67,7 @@ Python · Pandas · NumPy · Plotly · Dash · Matplotlib · Seaborn
 
 ## Limitations
 - Self-reported symptom and intensity data; no clinical verification
-- 400-record dataset from a single source — findings are exploratory, not diagnostic
+- 400-record dataset from a single source (findings are exploratory)
 - Limited variability for some symptoms (e.g., ataxia, dysarthria) constrained their statistical power; addressed by aggregating into a total symptom count
 - High prevalence of general symptoms like nausea and phonophobia reduced their discriminative value for distinguishing severity
 
